@@ -119,6 +119,8 @@ This section explored information extraction utilizing DSPy.  Several models wer
 
 ChainOfThoughWithAHint was utilizized as well as ChainOfThought for the DSPy module.  
 
+<img src = 'https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/c0deb837cd2ffb9b1a47c28f1251e8db259c7666/data/dspy.png'>
+
 **Model Comparison Table**
 
 <div align="center">
