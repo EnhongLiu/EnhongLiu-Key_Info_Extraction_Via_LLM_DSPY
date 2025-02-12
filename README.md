@@ -18,8 +18,7 @@ TLDR;
      * Github: https://github.com/stanfordnlp/dspy
      * Docs: https://dspy-docs.vercel.app/docs/intro 
 
-
-* Here is the overall pipeline in one notebook that utilizes the utils folder. [Overall Pipeline Notebook](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/tutorial/example_pipeline.ipynb) 
+* Here is the overall pipeline in one notebook that utilizes the utils folder. [Overall Pipeline Notebook](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/tutorial/example_pipeline.ipynb) 
   
   * In the DSPy pipeline, you can select the desired LLM suitable for your compute resource
   * If you run the more precise pipeline it is more resource intensive and might not be able to run the 4-bit quantized Qwen 2 on a 16 GB VRAM
@@ -34,11 +33,11 @@ TLDR;
 
    How we chose between Recursive Character Text Splitting and Semantic Text Splitting is if the job post had more than 1500 words and 8000 tokens it would fall into Recursive Character Text Splitting. Anything below would go to Semantic Text Splitting. 
    
-* Text Chunking Notebook that does semantic and recursive [LangChain Text Chunking](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/01_text-chunking.ipynb)
+* Text Chunking Notebook that does semantic and recursive [LangChain Text Chunking](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/01_text-chunking.ipynb)
   
 Data is then aggregated and a sample of 10,000 is taken.  Our team labeled a dataset of 300 and 3500. 
       
-* Creating the data for labeling to be moved to excel to label for binary classification. [Data Selection for Labeling](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/02_data_creation.ipynb)
+* Creating the data for labeling to be moved to excel to label for binary classification. [Data Selection for Labeling](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/02_data_creation.ipynb)
 
 **Instructions for labeling:**
 
@@ -74,11 +73,11 @@ Model is then used to remove text that aren't signals we are looking to extract 
 
 SetFit model training on 3500 dataset example.  Trained on 5 epochs and 5 iterations with max sequence length of 512. 
 
-* Fine-Tuning a SetFit Model [SetFit Model Training](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/03_setfit_model_training_3500.ipynb)
+* Fine-Tuning a SetFit Model [SetFit Model Training](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/03_setfit_model_training_3500.ipynb)
 
 Distillation of the SetFit model that used paraphrase-mpnet-base-v2 as the teacher model and paraphrase-all-MiniLM-L6-V2 as the student model. 
 
-* Distilling a model using a Teacher and Student model [SetFit Model Distillation](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/04_setfit_distilliation.ipynb)
+* Distilling a model using a Teacher and Student model [SetFit Model Distillation](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/04_setfit_distilliation.ipynb)
 
 Model Comparison on Accuracy Score and Custom Dataset
    
@@ -98,15 +97,15 @@ Model Comparison on Accuracy Score and Custom Dataset
 
 We compared the model based off of accuracy and a custom dataset.  
 
-* Comparing all our trained models [SetFit Model Comparison](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/05_setfit_model_compare.ipynb)
+* Comparing all our trained models [SetFit Model Comparison](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/05_setfit_model_compare.ipynb)
   
 The mpnet model performed the best. Distillation unfortunately didn't produce good results.  Once denoising was done. The list of strings was the put together back into a single string. 
 
-* Performing inference with the final selected model [SetFit Model Inference](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/06_setfit_model_infernece.ipynb)
+* Performing inference with the final selected model [SetFit Model Inference](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/06_setfit_model_infernece.ipynb)
   
 Lastly we look at the model using a Tri-gram Frequency bar chart to see how well denoising performed. 
    
-* Looking at word frequency of the denoised job posting using count vectorization [SetFit Word Frequency Model Eval](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/07_setfit_perf_eval.ipynb)
+* Looking at word frequency of the denoised job posting using count vectorization [SetFit Word Frequency Model Eval](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/02_preprocess/07_setfit_perf_eval.ipynb)
 
 ---
 
@@ -144,7 +143,7 @@ ChainOfThoughWithAHint was utilizized as well as ChainOfThought for the DSPy mod
     llm = dspy.OpenAI(model='gpt-3.5-turbo', api_key=api_key)
     dspy.settings.configure(lm=llm)
   ```
-* [DSPy with GPT3.5 Turbo](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/GPT3.5-Turbo.ipynb)
+* [DSPy with GPT3.5 Turbo](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/GPT3.5-Turbo.ipynb)
 
   Gemini
 
@@ -153,7 +152,7 @@ ChainOfThoughWithAHint was utilizized as well as ChainOfThought for the DSPy mod
     gemini = dspy.Google("gemini-1.5-flash-latest", api_key=gemini_key)
     dspy.settings.configure(lm=gemini, max_tokens=1024)
   ```
-* [DSPy with Gemini1.5](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/Gemini1.5Flash.ipynb)
+* [DSPy with Gemini1.5](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/Gemini1.5Flash.ipynb)
 
 **Open Source Models**
   
@@ -162,9 +161,9 @@ ChainOfThoughWithAHint was utilizized as well as ChainOfThought for the DSPy mod
   llm = dspy.OllamaLocal(model='qwen2:latest', max_tokens = 1000, temperature=0.0)
   dspy.settings.configure(lm=llm)
   ```
-* [DSPy with Ollama Qwen 2 Q&A Format](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/ollama_qwen2.ipynb)
-* [DSPy with Ollama Qwen 2 Pydantic with chainofthought with a hint](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/ollama_qwen2_pydantic_v2.ipynb)
-* [DSPy with Ollama Llama 3 Pydantic with chainofthought with a hint](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/ollama_llama3_pydantic_v2.ipynb)
+* [DSPy with Ollama Qwen 2 Q&A Format](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/ollama_qwen2.ipynb)
+* [DSPy with Ollama Qwen 2 Pydantic with chainofthought with a hint](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/ollama_qwen2_pydantic_v2.ipynb)
+* [DSPy with Ollama Llama 3 Pydantic with chainofthought with a hint](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/ollama_llama3_pydantic_v2.ipynb)
 
   Post and Pre Quantized models from HuggingFace
     * Note:  Unless you want to customize the level of quantization, post-quantized version of the models uploaded by Unsloth were more efficient to use than quantizing it yourself through bitsandbytes.  The memory usage on the GPU was lower. 
@@ -189,10 +188,10 @@ ChainOfThoughWithAHint was utilizized as well as ChainOfThought for the DSPy mod
   dspy.settings.configure(lm = llm)
 
   ```
-* [DSPy with Quantized HuggingFace Model Q&A ](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/Llama3_Quantized.ipynb)  
-* [DSPy with Qwen 2 Unsloth Q&A format post-quantization](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/quantized_qwen2.ipynb)
-* [DSPy with Qwen 2 Q&A with bitsandbytes pre-quantization](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/pre-quantized_qwen2.ipynb)
-* [DSPy Q&A with quantized Qwen 2 with mlFlow](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/post-quantized_qwen2_v2_mlflow.ipynb)
+* [DSPy with Quantized HuggingFace Model Q&A ](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/Llama3_Quantized.ipynb)  
+* [DSPy with Qwen 2 Unsloth Q&A format post-quantization](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/quantized_qwen2.ipynb)
+* [DSPy with Qwen 2 Q&A with bitsandbytes pre-quantization](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/pre-quantized_qwen2.ipynb)
+* [DSPy Q&A with quantized Qwen 2 with mlFlow](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/post-quantized_qwen2_v2_mlflow.ipynb)
 
 <div style="text-align:center;">
 
@@ -212,8 +211,8 @@ For metrics we looked a combined rouge score of rouge 1 rouge 2 and rouge L.  We
 
 During the last two weeks of the practicum, a model was released that utilized Qwen1.5-0.5B and phi-3-mini-4k, known as NuExtract (https://huggingface.co/numind/NuExtract). NuExtract is a purely information extraction model. In our brief experiments, we found that it performed quite well; however, it struggled with extracting certifications, recognizing employment types, and fully retrieving salary information.
 
-* [NuExtract with Qwen1.5-0.5B](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/nuextract_tiny.ipynb)
-* [NuExtract with Phi-3-3.8B](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/03_ml/nuextract_base.ipynb)
+* [NuExtract with Qwen1.5-0.5B](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/nuextract_tiny.ipynb)
+* [NuExtract with Phi-3-3.8B](https://github.com/EnhongLiu/Key_Info_Extraction_Via_LLM_DSPY/blob/7cf96f3a88b1439961ba05b74654a66b6e04b9b6/03_ml/nuextract_base.ipynb)
 
 ---
 
