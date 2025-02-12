@@ -19,8 +19,6 @@ TLDR;
      * Docs: https://dspy-docs.vercel.app/docs/intro 
 
 
-<img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/60f979a6-066c-44d6-b3b8-4a616479adcc" alt="intro" width="1000">
-
 * Here is the overall pipeline in one notebook that utilizes the utils folder. [Overall Pipeline Notebook](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/tutorial/example_pipeline.ipynb) 
   
   * In the DSPy pipeline, you can select the desired LLM suitable for your compute resource
@@ -31,8 +29,6 @@ TLDR;
 ### Text Preproecessing:
     
 **LangChain Text Chunking Recursive Character Text Splitting and Semantic Text Splitting**
-
-   <img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/30d808bc-8d75-4e23-8343-aab910713d86" alt="LangChain Text Splitting" width="1000">
    
    To reduce computational costs and token usage in our DSPy framework, we preprocess job postings by filtering out irrelevant sentences through text chunking. Using the LangChain library, we employ recursive character text splitting, which leverages          document structure and default separators like double new lines, new lines, spaces, and characters, as it is less computationally expensive than semantic splitting. Semantic text splitting, on the other hand, requires an embedding model to infer            semantic relationships between chunks for sentence segmentation.
 
@@ -61,7 +57,6 @@ The signals are defined as follows:
 
   Below is an example of how the labeling might look in Excel. However, for such manual tasks, it is recommended to purchase a one-time Prodigy subscription for the Adept team. Prodigy can help labelers work faster and use the already labeled dataset to train a smaller model. This model can then create a silver labeled dataset (labeled by machine learning or AI), which can be corrected to extend the gold labeled dataset (human-evaluated and labeled dataset). More information can be found on  Prodigy: https://prodi.gy
 
-<img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/73203b96-74cf-4f7f-8a5d-8b485ea28217" alt="intro" width="700">
 
   Overall, we reduced the text in job postings by 25%. Our team labeled the dataset leniently, aiming to retain potentially useful information. However, a more aggressive approach to reducing noisy signals might be more effective.
 
@@ -74,8 +69,6 @@ Common elements to exclude include:
 ---
 
 **Binary Classification SetFit Signal Denoising**
-
-<img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/aecd576c-0d98-442f-a1c7-ab2dfa00f736" alt="intro" width="1000">
 
 Model is then used to remove text that aren't signals we are looking to extract and saved as csv file for DSPy information extraction. The signals that the team looked for are related to position, location, work arragement, experience, employment type, pay, degree, certification and required skills. A binary classification model was created and data was labeled. The nomic-embed-text-v1.5 was used as the embedding model. 
 
@@ -107,8 +100,6 @@ We compared the model based off of accuracy and a custom dataset.
 
 * Comparing all our trained models [SetFit Model Comparison](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/05_setfit_model_compare.ipynb)
   
-<img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/25740ed1-ced4-4c21-ae5f-965d299c0a51" alt="intro" width="1000">
-
 The mpnet model performed the best. Distillation unfortunately didn't produce good results.  Once denoising was done. The list of strings was the put together back into a single string. 
 
 * Performing inference with the final selected model [SetFit Model Inference](https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/blob/main/02_preprocess/06_setfit_model_infernece.ipynb)
@@ -121,8 +112,6 @@ Lastly we look at the model using a Tri-gram Frequency bar chart to see how well
 
 ### DSPy Information Extraction pipeline
    
-<img src="https://github.com/syn228/ISYE-CSE-MGT-6748-Group-1/assets/33863191/d96a0ec2-9872-4056-bf51-e15bb040c3ef" alt="intro" width="1000">
-
 This section explored information extraction utilizing DSPy.  Several models were used from Hugging Face as well as proprietary models such as GPT and Gemini.  For open source models Qwen 2 performed the best from Alibaba.  The signature and module utilizing DSPy was experinmented in two ways.  
 
 1. Utilizing a Question and Answer format to run through the the job posting answering different questions and then returning a dictionary string.
